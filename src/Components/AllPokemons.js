@@ -1,22 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import './AllPokemons.css';
 import './Types.css';
-import pokeballCollor from '../img/pokeballCollor.png'
+import pokeballCollor from '../img/pokeballCollor.png';
 
-function AllPokemons({seachQuery}) {
+function AllPokemons({ seachQuery }) {
   const [pokemons, setPokemons] = useState([]);
   const [cardPokemon, setCardPokemon] = useState(null);
 
   const handleMouseEnter = (index) => {
     setCardPokemon(index);
   }
-  
-  // const handleMouseLeave = () => {
-  //   setCardPokemon(null);
-  // }
 
   const pegarListaPokemon = async () => {
-    const urlAPI = 'https://pokeapi.co/api/v2/pokemon?limit=386&offset=0'
+    const urlAPI = 'https://pokeapi.co/api/v2/pokemon?limit=386&offset=0';
     const responseAPI = await fetch(urlAPI);
     const dbPokemons = await responseAPI.json();
 
@@ -32,40 +28,23 @@ function AllPokemons({seachQuery}) {
   useEffect(() => {
     const mostrarListaPokemon = async () => {
       const dbListPokemon = await pegarListaPokemon();
-      if (seachQuery) {
-        const filteredPokemons = dbListPokemon.filter(
-          pokemon =>
-            pokemon.name.includes(seachQuery.toLowerCase()) ||
-            pokemon.id.toString() === seachQuery
-        );
-        setPokemons(filteredPokemons);
-      } else {
-        setPokemons(dbListPokemon);
-      }
+      const filteredPokemons = dbListPokemon.filter(
+        pokemon =>
+          pokemon.name.includes(seachQuery.toLowerCase()) ||
+          pokemon.id.toString() === seachQuery
+      );
+      setPokemons(filteredPokemons);
     };
     mostrarListaPokemon();
-    // Remova a console.log(pokemons); para evitar confusão
   }, [seachQuery]);
-
-  const pokemonsFiltrados = pokemons.filter((pokemon) => {
-    return (
-      pokemon.name.includes(seachQuery.toLowerCase()) ||
-      pokemon.id.toString().includes(seachQuery)
-    );
-  });
-
-  // Encontre o Pokémon correspondente à busca
-  const pokemonBuscado = pokemonsFiltrados[0];
-  // Encontre o índice do Pokémon buscado na lista completa de pokémons
-  const indexDoPokemonBuscado = pokemons.findIndex(pokemon => pokemon.id === pokemonBuscado.id);
-
+  
   return (
     <div>
       <div className='containerPokemons'>
         <div
           className='containerLeft'>
             <img className='pokeballBackground'src={pokeballCollor} />
-          {pokemonsFiltrados.map((pokemon, index) => (
+          {pokemons.map((pokemon, index) => (
             <div key={index} className={`pokemonSolo ${cardPokemon === index ? 'active' : ''}`}
             onMouseEnter={() => handleMouseEnter(index)}
             // onMouseLeave={handleMouseLeave}
@@ -87,10 +66,10 @@ function AllPokemons({seachQuery}) {
         </div>
         <div className='containerRight'>
          <div className='listPokemons'>
-         {pokemons.slice(indexDoPokemonBuscado).map((pokemon, index) => (
+         {pokemons.map((pokemon, index) => (
             <div
-              key={indexDoPokemonBuscado + index}
-              onMouseEnter={() => handleMouseEnter(indexDoPokemonBuscado + index)}
+              key={index}
+              onMouseEnter={() => handleMouseEnter(index)}
               // onMouseLeave={handleMouseLeave}
              > 
               <span className='cardPokemonRight'>
