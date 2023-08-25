@@ -1,0 +1,79 @@
+
+header{
+  position: absolute;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  width: 100vw;
+  height: 6.5vh;
+  margin-top: 15px;
+  background: linear-gradient(115deg, #dfdfdf 55%, #000 55%);
+  padding: 0 20px;
+}
+.headerRight{
+  display: flex;
+  justify-content: center;
+  /* overflow: visible; */
+}
+.headerRight input{
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  width: 180px;
+  height: 35px;
+  padding: 0px 40px 0px 10px;
+  font-size: 13pt;
+  font-weight:700 ;
+}
+.headerRight button{
+  position: relative;
+  color: #727272;
+  font-size: 16pt;
+  margin-right: 30px;
+  right: 35px;
+  border: transparent;
+  background: transparent;
+  cursor: pointer;
+}
+.headerRight button:hover{
+  color: #0f0f0f;
+}
+h1{
+  padding-left: 20px;
+}
+
+@media (max-width:500px){
+  h1{
+    font-size: 16pt;
+  }
+  .headerRight input{
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    width: 100px;
+    height: 28px;
+    padding: 0px 10px 0px 10px;
+    font-size: 13pt;
+    font-weight:700;
+  }
+  .headerRight button{
+    position: relative;
+    color: #727272;
+    font-size: 16pt;
+    margin-right: 0;
+    right: 35px;
+    border: transparent;
+    background: transparent;
+    cursor: pointer;
+  }
+  .headerRight button{
+    position: relative;
+    color: #727272;
+    font-size: 12pt;
+    margin-right: 5px;
+    right: 25px;
+    border: transparent;
+    background: transparent;
+    cursor: pointer;
+  }
+}
