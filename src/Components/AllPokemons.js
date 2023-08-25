@@ -16,7 +16,7 @@ function AllPokemons({seachQuery}) {
   // }
 
   const pegarListaPokemon = async () => {
-    const urlAPI = 'https://pokeapi.co/api/v2/pokemon?limit=503&offset=0'
+    const urlAPI = 'https://pokeapi.co/api/v2/pokemon?limit=386&offset=0'
     const responseAPI = await fetch(urlAPI);
     const dbPokemons = await responseAPI.json();
 
