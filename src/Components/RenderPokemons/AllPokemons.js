@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Searchbar from '../Searchbar/Searchbar';
+import Searchbar from '../searchbar/Searchbar';
 import './AllPokemons.css';
 import '../Types.css';
 import pokeballCollor from '../../img/pokeballCollor.png';
@@ -19,7 +19,7 @@ const handleCardPokemon = (pokemon) => {
   }
 
   const pegarListaPokemon = async () => {
-    const urlAPI = 'https://pokeapi.co/api/v2/pokemon?limit=386&offset=0';
+    const urlAPI = 'https://pokeapi.co/api/v2/pokemon?limit=50&offset=0';
     const responseAPI = await fetch(urlAPI);
     const dbPokemons = await responseAPI.json();
 
