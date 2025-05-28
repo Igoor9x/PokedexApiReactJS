@@ -6,7 +6,7 @@ bottom:60px;
 .tipos span {
   text-align: center;
   border-radius: 20px;
-  font-size: 32pt;
+  font-size: 40px;
   padding: 10px;
   margin: 5px;
   color: #fff;
@@ -27,7 +27,7 @@ bottom:60px;
   background: rgb(63, 18, 18);
 }
 .steel{
-  background: #8aa58f;
+  background: rgb(138, 165, 143);
 }
 .bug{
   background: rgb(3, 100, 3);
@@ -39,7 +39,7 @@ bottom:60px;
   background: rgb(110, 160, 236);
 }
 .electric{
-  background: yellow;
+  background: rgb(255, 255, 0);
 }
 .ground{
   background: rgb(153, 89, 16);
@@ -48,7 +48,7 @@ bottom:60px;
   background: rgb(190, 75, 9);
 }
 .dark{
-  background: #201f1f;
+  background: rgb(32, 31, 31);
 }
 .dragon{
   background: rgb(117, 167, 241);
@@ -66,28 +66,15 @@ bottom:60px;
   background: rgb(192, 142, 151);
 }
 
-@media (max-width:650px){
-  .tipos{
-    bottom:0px;
-    }
-    .tipos span {
-      text-align: center;
-      border-radius: 20px;
-      font-size: 18pt;
-      padding: 5px;
-      color: #fff;
-    }
 
-}
-@media (max-width:445px){
+@media (max-width: 767px){
   .tipos{
     bottom:0px;
     }
     .tipos span {
       text-align: center;
       border-radius: 20px;
-      font-size: 10pt;
-      padding: 3px;
+      font-size: 14px;
       color: #fff;
     }
 

@@ -5,8 +5,8 @@
 }
 
 .containerLeft{
-  margin-top: 50px;
-  width: 120vw;
+  margin-top: 125px;
+  width: 60vw;
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -29,11 +29,11 @@
   display: flex;
 }
 h2{
-  font-size: 36pt;
+  font-size: 48px;
 }
 .pokemonSolo span{
   margin-top: 10px;
-  font-size: 22pt;
+  font-size: 28px;
   font-weight: 700;
 }
 .pokemonSolo img{
@@ -41,8 +41,8 @@ h2{
 }
 
 .containerRight{
-  margin-top: 85px;
-  width: 100vw;
+  margin-top: 125px;
+  width: 30vw;
   display: flex;
   flex-direction: column;
   align-items: end;
@@ -50,8 +50,13 @@ h2{
   background: transparent;
 }
 .listPokemons{
+  width: 123%;
+  display: flex;
+  justify-content: center;
   height: 85vh;
+  flex-wrap: wrap;
   overflow-y: scroll;
+  padding-bottom: 40px;
 }
 ::-webkit-scrollbar{
   width: 10px;
@@ -76,35 +81,93 @@ h2{
   border-radius: 8px;
   padding: 5px;
   color: #ffa600;
-  font-size:14pt;
+  font-size:18px;
   font-weight: 700;
   user-select: none;
   cursor: pointer;
-  transition:  .5s;
+  transition: .5s;
+  min-height: 170px;
+    max-height: 170px;
 }
 .ContainerRight span:hover{
   background: linear-gradient(115deg, #c0c0c0 55%, #862304 50%);
   border: 2px solid #f77307;
   color: #f77307;
 }
-.cardPokemonRight{
+.cardPokemon{
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.modalDetails{
+  display: none;
+}
+.modalDetails.active{
+  display: flex;
+}
+.overlayModal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+}
+.modalDetailsContent{
+  width: 500px;
+  height: 500px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
 
+@media (max-width: 1024px){
+  .listPokemons {
+    width: 96%;
+  }
+  .containerLeft {
+    width: 75vw;
+  }
+}
 
-@media (max-width:650px){
+@media (max-width: 767px){
+  *{
+    overflow: hidden;
+  }
   h2{
-    font-size: 28pt;
+    font-size: 36px;
+  }
+  .containerPokemons{
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .containerLeft, .containerRight{
+    width: 100%;
   }
   .containerLeft{
-    margin-top: 120px;
-    width: 150vw;
+    height: 403px;
+    margin-top: 115px;
+  }
+  .containerRight{
+    margin-top: 20px;
+    padding: 0 10px;
+  }
+  .listPokemons{
+    width: 100%;
+    padding-bottom: 450px;
+  }
+  .cardPokemon{
+    width: 165px !important;
   }
   .pokemonSolo span{
     margin-top: 10px;
-    font-size: 16pt;
+    font-size: 22px;
     font-weight: 700;
   }
   .pokemonSolo img{
@@ -112,7 +175,6 @@ h2{
   }
   .pokeballBackground{
     opacity: 50%;
-    margin-left: 30px;
     margin-top: 100px;
     width: 300px;
     position: fixed;
@@ -126,43 +188,7 @@ h2{
     height: 45px;
   }
   .listPokemons span{
-    font-size: 10pt;
-  }
-  
-}
-
-@media (max-width:445px){
-  h2{
-    font-size: 20pt;
-  }
-  .containerLeft{
-    margin-top: 180px;
-  }
-  .pokemonSolo span{
-    margin-top: 10px;
-    font-size: 12pt;
-    font-weight: 700;
-  }
-  .pokemonSolo img{
-    width: 150px;
-  }
-  .pokeballBackground{
-    opacity: 50%;
-    margin-left: 5px;
-    margin-top: 65px;
-    width: 180px;
-    position: fixed;
-  }
-  .containerRight span{
-    width: 75px;
-    height: 70px;
-  }
-  .listPokemons img{
-    width: 35px;
-    height: 35px;
-  }
-  .listPokemons span{
-    font-size: 7pt;
+    font-size: 14px;
   }
   
 }

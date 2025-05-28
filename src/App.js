@@ -1,16 +1,15 @@
 
 import './App.css';
 import { useState } from 'react';
-import Header from './Components/Header';
-import Footer from './Components/Footer';
-import AllPokemons from './Components/AllPokemons';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import AllPokemons from './components/RenderPokemons/AllPokemons';
 
 function App() {
-  const [searchQuery, setSearchQuery] = useState('');
   return (
     <div className="App">
-      <Header onSearch={setSearchQuery} /> 
-      <AllPokemons  seachQuery={searchQuery}/>
+      <Header /> 
+      <AllPokemons />
       <Footer /> 
     </div>
   );
