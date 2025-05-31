@@ -1,4 +1,4 @@
-// Header.js
+
 import "./NewHeader.css";
 
 function Header() {
