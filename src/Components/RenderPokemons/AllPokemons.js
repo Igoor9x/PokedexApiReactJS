@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Searchbar from '../searchbar/Searchbar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import './AllPokemons.css';
 import '../Types.css';
 import pokeballCollor from '../../img/pokeballCollor.png';
@@ -10,16 +12,16 @@ function AllPokemons() {
   const [cardPokemon, setCardPokemon] = useState(null);
   const [pokemonSelecionado, setPokemonSelecionado] = useState(null);
 
-const handleCardPokemon = (pokemon) => {
-  setPokemonSelecionado(pokemon);
-}
+  const handleCardPokemon = (pokemon) => {
+    setPokemonSelecionado(pokemon);
+  }
 
   const handleMouseEnter = (index) => {
     setCardPokemon(index);
   }
 
   const pegarListaPokemon = async () => {
-    const urlAPI = 'https://pokeapi.co/api/v2/pokemon?limit=50&offset=0';
+    const urlAPI = 'https://pokeapi.co/api/v2/pokemon?limit=151&offset=0';
     const responseAPI = await fetch(urlAPI);
     const dbPokemons = await responseAPI.json();
 
@@ -46,14 +48,6 @@ const handleCardPokemon = (pokemon) => {
     mostrarListaPokemon();
   }, [searchQuery]);
 
-  useEffect(() => {
-  if (pokemonSelecionado) {
-    const modalDetails = document.querySelector('.modalDetails');
-    if (modalDetails) {
-      modalDetails.classList.add('active');
-    }
-  }
-}, [pokemonSelecionado]);
   
   return (
     <div>
@@ -79,28 +73,9 @@ const handleCardPokemon = (pokemon) => {
                     {pokemon.types[1].type.name.replace(/^./, (str) => str.toUpperCase())}
                   </span>}
               </div>
-              {pokemonSelecionado && (
-                <div className='modalDetails'>
-                  <div className='overlayModal'></div>
-                  <div className='modalDetailsContent'>
-                     <span onClick={() => document.querySelector('.modalDetails').classList.remove('active')}>Fechar</span>
-                    <h3>Details</h3>  
-                    <p><strong>Height:</strong> {pokemon.height / 10} m</p>
-                    <p><strong>Weight:</strong> {pokemon.weight / 10} kg</p>
-                    <p><strong>Base Experience:</strong> {pokemon.base_experience}</p>
-                    <p><strong>Abilities:</strong></p>
-                    <ul>
-                      {pokemon.abilities.map((ability, idx) => (
-                        <li key={idx}>{ability.ability.name.replace(/^./, (str) => str.toUpperCase())}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              )}
             </div>
           ))}
         </div>
-
 
         <div className='containerRight'>
          <div className='listPokemons'>
@@ -123,7 +98,43 @@ const handleCardPokemon = (pokemon) => {
          </div>
         </div>
       </div>
+      {pokemonSelecionado && (        
+        <div className='modalDetails active'>
+          <div className='overlayModal' onClick={() => setPokemonSelecionado(null)}></div>
+          <div className='modalDetailsContent'>
+            <span className='closeModalBtn' onClick={() => setPokemonSelecionado(null)}> <FontAwesomeIcon icon={faXmark} /></span>
+            <h3>Details</h3>  
+            <div className='generalDetails'>
+              <h2>{pokemonSelecionado.name}</h2>
+              <img src={pokemonSelecionado.sprites.other['official-artwork'].front_default}/>
+              <p><strong>Id:</strong> {pokemonSelecionado.id}</p>
+              <p><strong>Height:</strong> {pokemonSelecionado.height / 10} m</p>
+              <p><strong>Weight:</strong> {pokemonSelecionado.weight / 10} kg</p>
+              <p><strong>Base Experience:</strong> {pokemonSelecionado.base_experience}</p>
+            </div>
+            <div className='stats'>
+              <p><strong>Stats:</strong></p>
+              <ul>
+                {pokemonSelecionado.stats.map((stats, idx) => (
+                  <div key={idx}>{stats.stat.name.replace(/^./, (str) => str.toUpperCase())}
+                    <span className='statsValue'>{stats.base_stat}</span>
+                  </div>
+                ))}
+              </ul>
+            </div>
+            <div className='abilities'>
+            <p><strong>Abilities:</strong></p>
+              <ul>
+                {pokemonSelecionado.abilities.map((ability, idx) => (
+                  <li key={idx}>{ability.ability.name.replace(/^./, (str) => str.toUpperCase())}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
+    
   )
 }
 
