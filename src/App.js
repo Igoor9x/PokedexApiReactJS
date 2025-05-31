@@ -1,7 +1,7 @@
 
 import './App.css';
 import { useState } from 'react';
-import NewHeader from './components/header/NewHeader';
+import NewHeader from './components/Header/NewHeader';
 import Footer from './components/footer/Footer';
 import AllPokemons from './components/renderPokemons/AllPokemons';
 
