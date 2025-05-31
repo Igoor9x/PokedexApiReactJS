@@ -1,5 +1,5 @@
-// Header.js
-import "./Header.css";
+
+import "./NewHeader.css";
 
 function Header() {
 
