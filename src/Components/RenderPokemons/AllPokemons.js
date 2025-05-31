@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import Searchbar from '../searchbar/Searchbar';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { useState, useEffect } from 'react';
+import Searchbar from '../searchbar/searchbar';
 import './AllPokemons.css';
 import '../Types.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import pokeballCollor from '../../img/pokeballCollor.png';
 
 function AllPokemons() {

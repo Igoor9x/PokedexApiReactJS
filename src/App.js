@@ -1,9 +1,8 @@
 
 import './App.css';
-import { useState } from 'react';
-import NewHeader from './components/Header/NewHeader';
-import Footer from './components/footer/Footer';
-import AllPokemons from './components/renderPokemons/AllPokemons';
+import NewHeader from './components/header/hewHeader';
+import Footer from './components/footer/hooter';
+import AllPokemons from './components/renderPokemons/allPokemons';
 
 function App() {
   return (
