@@ -104,7 +104,9 @@ function AllPokemons() {
 
   useEffect(() => {
     if (!pokemonSelecionado) return;
-    const aoApertarTecla = (e) => e.key === 'Escape' && fecharModal();
+    const aoApertarTecla = (e) => {
+      if (e.key === 'Escape') setPokemonSelecionado(null);
+    };
     window.addEventListener('keydown', aoApertarTecla);
     return () => window.removeEventListener('keydown', aoApertarTecla);
   }, [pokemonSelecionado]);
